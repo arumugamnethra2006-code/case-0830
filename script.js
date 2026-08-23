@@ -739,7 +739,40 @@ function openNightScene() {
 /* ==========================================
    PHONE CALL
 ========================================== */
+function playPhoneRing() {
 
+    const audioContext =
+        new (window.AudioContext ||
+        window.webkitAudioContext)();
+
+    const oscillator =
+        audioContext.createOscillator();
+
+    const gain =
+        audioContext.createGain();
+
+    oscillator.type = "sine";
+
+    oscillator.frequency.setValueAtTime(
+        700,
+        audioContext.currentTime
+    );
+
+    gain.gain.setValueAtTime(
+        0.08,
+        audioContext.currentTime
+    );
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+
+    oscillator.start();
+
+    oscillator.stop(
+        audioContext.currentTime + 0.35
+    );
+
+}
 function answerPhone() {
 
     const content =
