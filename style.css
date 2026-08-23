@@ -2346,3 +2346,58 @@ footer {
     }
 
 }
+/* ==========================================
+   CASE FILE TRANSITION
+========================================== */
+
+.investigation-start {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: caseOpen 1.2s ease forwards;
+}
+
+.case-loading {
+    padding: 40px;
+}
+
+.case-loading h1 {
+    font-size: clamp(42px, 8vw, 80px);
+    letter-spacing: 10px;
+    margin: 20px 0;
+    animation: caseTitle 1.5s ease forwards;
+}
+
+.case-loading p {
+    letter-spacing: 3px;
+}
+
+@keyframes caseOpen {
+
+    from {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+@keyframes caseTitle {
+
+    from {
+        opacity: 0;
+        letter-spacing: 20px;
+    }
+
+    to {
+        opacity: 1;
+        letter-spacing: 10px;
+    }
+
+}
