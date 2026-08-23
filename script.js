@@ -1013,7 +1013,7 @@ function openCyranEvidence() {
     `;
 
 }
-function inspectCyranConnection() {
+function inspectCyranConnection() {      const content =         document.querySelector(".case-content");      content.innerHTML = `          <div class="question-screen">              <div class="classification">                 INVESTIGATION DECISION             </div>              <h2>                 WHO DO YOU TRUST?             </h2>              <p>                 Three names.                 One missing woman.                 And someone is lying.             </p>              <div class="choice-grid">                  <button                     class="choice-button"                     onclick="chooseSuspect('kael')"                 >                     KAEL VORN                 </button>                  <button                     class="choice-button"                     onclick="chooseSuspect('cyran')"                 >                     CYRAN VEYL                 </button>                  <button                     class="choice-button"                     onclick="chooseSuspect('veyra')"                 >                     VEYRA SOLEN                 </button>              </div>          </div>      `;  }
 
     const content =
         document.querySelector(".case-content");
@@ -1047,6 +1047,77 @@ function inspectCyranConnection() {
             <p class="small-text">
                 ALL THREE APPEAR IN THE SAME
                 CLASSIFIED RECORD.
+            </p>
+
+        </div>
+
+    `;
+
+}
+function chooseSuspect(choice) {
+
+    const content =
+        document.querySelector(".case-content");
+
+    let message = "";
+
+    if (choice === "kael") {
+
+        message = `
+            KAEL VORN.<br><br>
+            You think he is hiding something.
+            <br><br>
+            <span>
+            You're right.
+            </span>
+        `;
+
+    }
+
+    if (choice === "cyran") {
+
+        message = `
+            CYRAN VEYL.<br><br>
+            His records are too clean.
+            <br><br>
+            <span>
+            Someone erased them.
+            </span>
+        `;
+
+    }
+
+    if (choice === "veyra") {
+
+        message = `
+            VEYRA SOLEN.<br><br>
+            You believe she left the clues
+            intentionally.
+            <br><br>
+            <span>
+            And that changes everything.
+            </span>
+        `;
+
+    }
+
+    content.innerHTML = `
+
+        <div class="revelation">
+
+            <div class="classification">
+                DECISION RECORDED
+            </div>
+
+            <h2>
+                ${message}
+            </h2>
+
+            <div class="divider"></div>
+
+            <p class="small-text">
+                YOUR CHOICE WILL AFFECT
+                THE INVESTIGATION.
             </p>
 
         </div>
