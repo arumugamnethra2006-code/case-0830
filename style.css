@@ -1675,3 +1675,257 @@ footer {
     font-size: 14px;
 
 }
+/* ==========================================
+   CRIME SCENE — EVIDENCE 002
+========================================== */
+
+.crime-scene {
+    min-height: 80vh;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.crime-scene h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(45px, 8vw, 85px);
+    letter-spacing: 5px;
+    margin: 20px 0 5px;
+}
+
+.crime-room {
+    width: min(850px, 95%);
+    height: 430px;
+    margin: 45px auto;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #111a32 0%,
+            #0a0d19 55%,
+            #07080e 100%
+        );
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,0.65);
+}
+
+
+/* WINDOW */
+
+.room-window {
+    position: absolute;
+
+    width: 230px;
+    height: 250px;
+
+    top: 55px;
+    right: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(150,190,210,0.25);
+
+    font-size: 10px;
+    letter-spacing: 6px;
+
+    border: 3px solid #202b47;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(55,85,125,0.25),
+            rgba(5,8,17,0.8)
+        );
+
+    box-shadow:
+        inset 0 0 60px rgba(60,100,150,0.15);
+}
+
+
+/* RAIN LIGHT */
+
+.room-window::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            105deg,
+            transparent 0px,
+            transparent 9px,
+            rgba(170,200,220,0.08) 10px,
+            transparent 11px
+        );
+
+    animation: windowRain 1s linear infinite;
+}
+
+@keyframes windowRain {
+    from {
+        transform: translateY(-15px);
+    }
+
+    to {
+        transform: translateY(15px);
+    }
+}
+
+
+/* ROOM LIGHT */
+
+.room-light {
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    top: -180px;
+    left: 180px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,169,92,0.18),
+            transparent 65%
+        );
+
+    filter: blur(15px);
+}
+
+
+/* CHAIR */
+
+.room-chair {
+    position: absolute;
+
+    width: 130px;
+    height: 160px;
+
+    left: 180px;
+    bottom: 45px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #171923,
+            #080910
+        );
+
+    border-radius: 15px 15px 5px 5px;
+
+    box-shadow:
+        30px 25px 45px rgba(0,0,0,0.6);
+}
+
+.room-chair::before {
+    content: "";
+
+    position: absolute;
+
+    width: 105px;
+    height: 100px;
+
+    left: 13px;
+    top: -70px;
+
+    background: #11131c;
+
+    border-radius: 12px;
+}
+
+.room-chair span {
+    position: absolute;
+
+    bottom: -25px;
+    left: 30px;
+
+    color: #4d5360;
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+}
+
+
+/* NOTE */
+
+.room-note {
+    position: absolute;
+
+    width: 115px;
+    height: 75px;
+
+    right: 250px;
+    bottom: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d6cdb9;
+
+    color: #26221d;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    transform: rotate(-7deg);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.5);
+}
+
+
+/* DESCRIPTION */
+
+.crime-scene .scene-description {
+    max-width: 550px;
+
+    margin: 0 auto 30px;
+
+    color: var(--dim);
+
+    font-size: 11px;
+
+    line-height: 2;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .crime-room {
+        height: 360px;
+    }
+
+    .room-window {
+        width: 150px;
+        height: 190px;
+
+        right: 25px;
+        top: 45px;
+    }
+
+    .room-chair {
+        left: 50px;
+    }
+
+    .room-note {
+        right: 120px;
+        bottom: 45px;
+    }
+
+}
