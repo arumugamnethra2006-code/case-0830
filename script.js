@@ -1054,7 +1054,7 @@ function inspectCyranConnection() {      const content =         document.queryS
     `;
 
 }
-function chooseSuspect(choice) {
+function chooseSuspect(choice) {      const content =         document.querySelector(".case-content");      let title = "";     let message = "";     let clue = "";      if (choice === "kael") {          title = "KAEL VORN";          message =             "You think Kael is hiding something.";          clue =             "A photograph was found in his apartment.";      }      else if (choice === "cyran") {          title = "CYRAN VEYL";          message =             "His records are suspiciously clean.";          clue =             "Someone accessed his deleted files.";      }      else {          title = "VEYRA SOLEN";          message =             "You believe Veyra left the clues intentionally.";          clue =             "The note was written after her disappearance.";      }       content.innerHTML = `          <div class="revelation">              <div class="classification">                 DECISION RECORDED             </div>              <h2>                 ${title}             </h2>              <p>                 ${message}             </p>              <div class="divider"></div>              <p class="small-text">                 NEW CLUE DISCOVERED             </p>              <p>                 ${clue}             </p>              <button                 class="case-button"                 onclick="openNewClue('${choice}')"             >                 OPEN CLUE             </button>          </div>      `;  }
 
     const content =
         document.querySelector(".case-content");
@@ -1118,6 +1118,109 @@ function chooseSuspect(choice) {
             <p class="small-text">
                 YOUR CHOICE WILL AFFECT
                 THE INVESTIGATION.
+            </p>
+
+        </div>
+
+    `;
+
+}
+function openNewClue(choice) {
+
+    const content =
+        document.querySelector(".case-content");
+
+    let clueTitle = "";
+    let clueText = "";
+
+    if (choice === "kael") {
+
+        clueTitle =
+            "THE PHOTOGRAPH";
+
+        clueText =
+            "Kael was photographed outside Veyra's apartment three nights before she disappeared.";
+
+    }
+
+    else if (choice === "cyran") {
+
+        clueTitle =
+            "DELETED RECORD";
+
+        clueText =
+            "Cyran accessed Veyra's file at 02:17 AM — exactly when the mysterious phone call was made.";
+
+    }
+
+    else {
+
+        clueTitle =
+            "VEYRA'S NOTE";
+
+        clueText =
+            "The handwriting matches the note found in the room. Veyra knew someone would eventually find it.";
+
+    }
+
+
+    content.innerHTML = `
+
+        <div class="evidence-screen">
+
+            <div class="classification">
+                NEW EVIDENCE UNLOCKED
+            </div>
+
+            <h2>
+                ${clueTitle}
+            </h2>
+
+            <div class="evidence-paper">
+
+                <p>
+                    ${clueText}
+                </p>
+
+            </div>
+
+            <button
+                class="case-button"
+                onclick="continueAfterChoice('${choice}')"
+            >
+                CONTINUE INVESTIGATION
+            </button>
+
+        </div>
+
+    `;
+
+}
+function continueAfterChoice(choice) {
+
+    const content =
+        document.querySelector(".case-content");
+
+    content.innerHTML = `
+
+        <div class="revelation">
+
+            <div class="classification">
+                CASE 0830 // DEEPER ACCESS
+            </div>
+
+            <h2>
+                YOU FOUND THE FIRST LIE.
+            </h2>
+
+            <p>
+                But someone expected you to find it.
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="small-text">
+                DEEP ARCHIVE UNLOCKED
             </p>
 
         </div>
