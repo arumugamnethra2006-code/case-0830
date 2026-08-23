@@ -1929,3 +1929,91 @@ footer {
     }
 
 }
+/* ==========================================
+   FINAL REVEAL
+========================================== */
+
+.revelation {
+    min-height: 75vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+    animation: finalReveal 1.5s ease forwards;
+}
+
+@keyframes finalReveal {
+
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+.revelation h2 {
+    max-width: 850px;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(
+        38px,
+        7vw,
+        85px
+    );
+
+    line-height: 1.15;
+
+    letter-spacing: 4px;
+
+    margin: 30px 0;
+
+    color: var(--white);
+
+    text-shadow:
+        0 0 50px rgba(255,255,255,0.08);
+}
+
+.revelation p {
+    max-width: 600px;
+
+    color: var(--soft);
+
+    font-size: 12px;
+
+    line-height: 2.2;
+
+    letter-spacing: 1px;
+
+    margin: 8px auto;
+}
+
+.revelation p strong {
+    color: var(--gold);
+
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+}
+
+.revelation .small-text {
+    margin-top: 35px;
+
+    color: var(--red);
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+}
