@@ -1196,7 +1196,7 @@ function openNewClue(choice) {
     `;
 
 }
-function continueAfterChoice(choice) {
+function continueAfterChoice(choice) {      const content =         document.querySelector(".case-content");      content.innerHTML = `          <div class="archive-screen">              <div class="classification">                 DEEP ARCHIVE // ACCESS GRANTED             </div>              <h2>                 CASE 0830             </h2>              <p class="archive-warning">                 THE FOLLOWING RECORD WAS NEVER                 MEANT TO BE FOUND.             </p>              <div class="archive-files">                  <button                     class="archive-file"                     onclick="openArchiveFile('VEYRA')"                 >                     FILE 01                     <span>VEYRA SOLEN</span>                 </button>                  <button                     class="archive-file"                     onclick="openArchiveFile('KAEL')"                 >                     FILE 02                     <span>KAEL VORN</span>                 </button>                  <button                     class="archive-file"                     onclick="openArchiveFile('CYRAN')"                 >                     FILE 03                     <span>CYRAN VEYL</span>                 </button>                  <button                     class="archive-file"                     onclick="openArchiveFile('CASE')"                 >                     FILE 04                     <span>CASE 0830</span>                 </button>              </div>          </div>      `;  }
 
     const content =
         document.querySelector(".case-content");
@@ -1221,6 +1221,138 @@ function continueAfterChoice(choice) {
 
             <p class="small-text">
                 DEEP ARCHIVE UNLOCKED
+            </p>
+
+        </div>
+
+    `;
+
+}
+function openArchiveFile(file) {
+
+    const content =
+        document.querySelector(".case-content");
+
+    let title = "";
+    let text = "";
+
+    if (file === "VEYRA") {
+
+        title = "VEYRA SOLEN";
+
+        text = `
+            Missing.
+            <br><br>
+            Official investigation: NONE.
+            <br><br>
+            Last confirmed sighting:
+            UNKNOWN.
+        `;
+
+    }
+
+    else if (file === "KAEL") {
+
+        title = "KAEL VORN";
+
+        text = `
+            No official record.
+            <br><br>
+            Name appears repeatedly
+            inside Veyra's private files.
+        `;
+
+    }
+
+    else if (file === "CYRAN") {
+
+        title = "CYRAN VEYL";
+
+        text = `
+            Investigator.
+            <br><br>
+            Accessed the case archive
+            at 02:17 AM.
+            <br><br>
+            Deleted the access record.
+        `;
+
+    }
+
+    else {
+
+        title = "CASE 0830";
+
+        text = `
+            THREE PEOPLE.
+            <br><br>
+            ONE DISAPPEARANCE.
+            <br><br>
+            NO OFFICIAL CASE.
+            <br><br>
+            SOMEONE IS WATCHING.
+        `;
+
+    }
+
+
+    content.innerHTML = `
+
+        <div class="evidence-screen">
+
+            <div class="classification">
+                ARCHIVE RECORD
+            </div>
+
+            <h2>
+                ${title}
+            </h2>
+
+            <div class="evidence-paper">
+
+                <p>
+                    ${text}
+                </p>
+
+            </div>
+
+            <button
+                class="case-button"
+                onclick="continueAfterArchive()"
+            >
+                CLOSE FILE
+            </button>
+
+        </div>
+
+    `;
+
+}
+function continueAfterArchive() {
+
+    const content =
+        document.querySelector(".case-content");
+
+    content.innerHTML = `
+
+        <div class="revelation">
+
+            <div class="classification">
+                SYSTEM ALERT
+            </div>
+
+            <h2>
+                SOMEONE IS WATCHING.
+            </h2>
+
+            <p>
+                Your access has been detected.
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="small-text">
+                CONNECTION TERMINATED
             </p>
 
         </div>
