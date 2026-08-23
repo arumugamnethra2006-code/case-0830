@@ -836,7 +836,21 @@ function answerPhone() {
     `;
 
 }
+/* ==========================================
+   CHARACTER PORTRAIT SYSTEM
+========================================== */
 
+function characterPortrait(name, image, alt) {
+
+    return `
+${characterPortrait(
+    "kael",
+    "kael-vorn.jpg",
+    "Kael Vorn"
+)}
+    `;
+
+}
 
 /* ==========================================
    START
