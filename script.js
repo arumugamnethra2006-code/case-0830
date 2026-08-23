@@ -673,15 +673,153 @@ function showComingSoon() {
             ".case-content"
         );
 
+   function showComingSoon() {
+
+    const content =
+        document.querySelector(
+            ".case-content"
+        );
+
     content.innerHTML = `
 
-        <div class="revelation">
+        <div class="scene-transition">
 
-            <div class="classification">
-                ACT 01
+            <div class="scene-number">
+                SCENE 01
             </div>
 
+            <div class="scene-line"></div>
+
             <h2>
+                02:17 AM
+            </h2>
+
+            <p class="scene-location">
+                VEYLORN CITY
+            </p>
+
+            <p class="scene-description">
+
+                The city is still awake.
+
+                Somewhere beneath the rain,
+                a telephone begins to ring.
+
+            </p>
+
+            <button
+                class="case-button"
+                onclick="openNightScene()"
+            >
+
+                ENTER SCENE
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+function openNightScene() {
+
+    const content =
+        document.querySelector(
+            ".case-content"
+        );
+
+    content.innerHTML = `
+
+        <div class="night-scene">
+
+            <div class="scene-overlay">
+
+                <div class="classification">
+                    VEYLORN CITY // 02:17 AM
+                </div>
+
+                <h2>
+                    SOMEONE KNOWS
+                </h2>
+
+                <p>
+
+                    The telephone rings again.
+
+                    <br><br>
+
+                    You answer.
+
+                </p>
+
+                <button
+                    class="case-button"
+                    onclick="answerPhone()"
+                >
+
+                    ANSWER
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+function answerPhone() {
+
+    const content =
+        document.querySelector(
+            ".case-content"
+        );
+
+    content.innerHTML = `
+
+        <div class="phone-scene">
+
+            <div class="classification">
+                INCOMING CALL // UNKNOWN
+            </div>
+
+            <div class="phone-text">
+
+                <p>
+                    ...
+                </p>
+
+                <p>
+                    "You found her file."
+                </p>
+
+                <p>
+                    "You shouldn't have."
+                </p>
+
+            </div>
+
+            <div class="divider"></div>
+
+            <p class="small-text">
+                CALL TERMINATED
+            </p>
+
+            <button
+                class="case-button"
+                onclick="continueAfterCall()"
+            >
+
+                TRACE THE CALL
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+   <h2>
                 INVESTIGATION CONTINUES.
             </h2>
 
@@ -705,3 +843,38 @@ function showComingSoon() {
 ========================================== */
 
 runLoadingSequence();
+function continueAfterCall() {
+
+    const content =
+        document.querySelector(
+            ".case-content"
+        );
+
+    content.innerHTML = `
+
+        <div class="revelation">
+
+            <div class="classification">
+                NEW EVIDENCE
+            </div>
+
+            <h2>
+                LOCATION FOUND.
+            </h2>
+
+            <p>
+                The call came from somewhere
+                inside Veylorn.
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="small-text">
+                EVIDENCE 002 UNLOCKED
+            </p>
+
+        </div>
+
+    `;
+
+}
