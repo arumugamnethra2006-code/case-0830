@@ -1422,3 +1422,256 @@ footer {
 
     object-fit: cover;
 }
+/* ==========================================
+   CINEMATIC NIGHT SCENE
+========================================== */
+
+.scene-transition {
+    min-height: 75vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.scene-number {
+    color: var(--gold);
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+}
+
+.scene-line {
+    width: 100px;
+    height: 1px;
+
+    margin: 25px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+.scene-transition h2 {
+    font-family: Georgia, serif;
+
+    font-size: clamp(55px, 10vw, 110px);
+
+    letter-spacing: 8px;
+
+    margin: 10px 0;
+}
+
+.scene-location {
+    color: var(--cyan);
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+}
+
+.scene-description {
+    max-width: 500px;
+
+    margin-top: 40px;
+
+    color: var(--dim);
+
+    font-size: 11px;
+
+    line-height: 2.2;
+}
+
+
+/* ==========================================
+   NIGHT SCENE
+========================================== */
+
+.night-scene {
+
+    min-height: 75vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(97, 184, 201, 0.12),
+            transparent 20%
+        ),
+
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(184, 59, 75, 0.18),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #10182d,
+            #050711 70%
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+}
+
+
+/* rain-like atmosphere */
+
+.night-scene::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -100%;
+
+    background:
+
+        repeating-linear-gradient(
+            110deg,
+            transparent 0px,
+            transparent 7px,
+            rgba(180, 210, 220, 0.035) 8px,
+            transparent 9px
+        );
+
+    animation:
+        rain 1.2s linear infinite;
+
+}
+
+@keyframes rain {
+
+    from {
+        transform: translateY(-30px);
+    }
+
+    to {
+        transform: translateY(30px);
+    }
+
+}
+
+
+.scene-overlay {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(650px, 85%);
+
+    padding: 70px 40px;
+
+    text-align: center;
+
+    background:
+        rgba(5, 7, 16, 0.55);
+
+    border:
+        1px solid rgba(255,255,255,0.09);
+
+    backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.5);
+
+}
+
+.scene-overlay h2 {
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(40px, 7vw, 75px);
+
+    letter-spacing: 5px;
+
+    margin: 25px 0;
+
+}
+
+.scene-overlay p {
+
+    color: var(--soft);
+
+    font-size: 11px;
+
+    line-height: 2;
+
+}
+
+
+/* ==========================================
+   PHONE SCENE
+========================================== */
+
+.phone-scene {
+
+    min-height: 75vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+.phone-text {
+
+    margin: 50px 0;
+
+    max-width: 600px;
+
+}
+
+.phone-text p {
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(22px, 4vw, 38px);
+
+    line-height: 1.6;
+
+    color: var(--white);
+
+    text-shadow:
+        0 0 30px rgba(255,255,255,0.08);
+
+}
+
+.phone-text p:first-child {
+
+    color: var(--dim);
+
+    font-family: monospace;
+
+    font-size: 14px;
+
+}
