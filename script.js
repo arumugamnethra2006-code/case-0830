@@ -861,34 +861,192 @@ ${characterPortrait(
 ========================================== */
 
 runLoadingSequence();
-function continueAfterCall() {      const content =         document.querySelector(".case-content");      content.innerHTML = `          <div class="crime-scene">              <div class="classification">                 EVIDENCE 002 // LOCATION             </div>              <h2>                 THE ROOM             </h2>              <p class="scene-location">                 VEYLORN // 02:31 AM             </p>              <div class="crime-room">                  <div class="room-light"></div>                  <div class="room-window">                     RAIN                 </div>                  <div class="room-chair">                     <span>CHAIR</span>                 </div>                  <div class="room-note">                     08 : 30                 </div>              </div>              <p class="scene-description">                  The room is empty.                  <br><br>                  But someone left one thing behind.              </p>              <button                 class="case-button"                 onclick="inspectNote()"             >                 INSPECT THE NOTE             </button>          </div>      `; }   function inspectNote() {      const content =         document.querySelector(".case-content");      content.innerHTML = `          <div class="evidence-screen">              <div class="classification">                 EVIDENCE 003 // PERSONAL NOTE             </div>              <h2>                 08 : 30             </h2>              <div class="evidence-paper">                  <p>                     If you're reading this,                     you found the room.                 </p>                  <p>                     Don't look for me.                 </p>                  <p>                     Look for the person                     who told you to stop.                 </p>                  <p>                     — V                 </p>              </div>              <p class="evidence-instruction">                 One question remains.             </p>              <button                 class="case-button"                 onclick="openFinalChoice()"             >                 CONTINUE             </button>          </div>      `; }   function openFinalChoice() {      const content =         document.querySelector(".case-content");      content.innerHTML = `          <div class="question-screen">              <div class="classification">                 INVESTIGATION DECISION             </div>              <h2>                 DO YOU KEEP LOOKING?             </h2>              <p>                 You have been warned twice.             </p>              <button                 class="case-button"                 onclick="finalReveal()"             >                 YES. I KEEP LOOKING.             </button>          </div>      `; }   function finalReveal() {      const content =         document.querySelector(".case-content");      content.innerHTML = `          <div class="revelation">              <div class="classification">                 CLASSIFIED // FINAL MESSAGE             </div>              <h2>                 YOU WERE NEVER                 THE INVESTIGATOR.             </h2>              <div class="divider"></div>              <p>                 Veyra didn't leave the clues                 for the police.             </p>              <p>                 She left them for                 <strong>you.</strong>             </p>              <br>              <p class="small-text">                 CASE 0830 — CONTINUED             </p>          </div>      `; }
+function continueAfterCall() {
 
     const content =
-        document.querySelector(
-            ".case-content"
-        );
+        document.querySelector(".case-content");
+
+    content.innerHTML = `
+
+        <div class="character-file">
+
+            <div class="classification">
+                NEW PERSON OF INTEREST
+            </div>
+
+            <div class="character-layout">
+
+                ${characterPortrait(
+                    "cyran",
+                    "cyran-veyl.jpg",
+                    "Cyran Veyl"
+                )}
+
+                <div class="character-information">
+
+                    <h2>
+                        CYRAN VEYL
+                    </h2>
+
+                    <p class="status-line">
+                        STATUS: ACTIVE
+                    </p>
+
+                    <div class="character-data">
+
+                        <p>
+                            AGE:
+                            <span>42</span>
+                        </p>
+
+                        <p>
+                            OCCUPATION:
+                            <span>INVESTIGATOR</span>
+                        </p>
+
+                        <p>
+                            CONNECTION TO VEYRA:
+                            <span>UNKNOWN</span>
+                        </p>
+
+                        <p>
+                            CONNECTION TO KAEL:
+                            <span>REDACTED</span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="character-warning">
+
+                CYRAN VEYL WAS THE LAST PERSON
+                TO ACCESS VEYRA SOLEN'S FILE.
+
+            </div>
+
+            <button
+                class="case-button"
+                onclick="openCyranEvidence()"
+            >
+
+                VIEW RECORD
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+function openCyranEvidence() {
+
+    const content =
+        document.querySelector(".case-content");
+
+    content.innerHTML = `
+
+        <div class="evidence-screen">
+
+            <div class="classification">
+                RESTRICTED RECORD
+            </div>
+
+            <h2>
+                CYRAN VEYL
+            </h2>
+
+            <div class="evidence-paper">
+
+                <p>
+                    LAST FILE ACCESS:
+                    02:17 AM
+                </p>
+
+                <p>
+                    FILE ACCESSED:
+                    VEYRA SOLEN
+                </p>
+
+                <p>
+                    SECOND FILE:
+                    KAEL VORN
+                </p>
+
+                <p>
+                    ACTION:
+                    DELETED
+                </p>
+
+            </div>
+
+            <p class="evidence-instruction">
+
+                Someone deleted the record
+                immediately after accessing it.
+
+                <br><br>
+
+                The question is:
+
+                <br>
+
+                <strong>
+                    WHY?
+                </strong>
+
+            </p>
+
+            <button
+                class="case-button"
+                onclick="inspectCyranConnection()"
+            >
+
+                INVESTIGATE
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+function inspectCyranConnection() {
+
+    const content =
+        document.querySelector(".case-content");
 
     content.innerHTML = `
 
         <div class="revelation">
 
             <div class="classification">
-                NEW EVIDENCE
+                DATABASE MATCH
             </div>
 
             <h2>
-                LOCATION FOUND.
+                THREE NAMES.
             </h2>
 
             <p>
-                The call came from somewhere
-                inside Veylorn.
+                VEYRA SOLEN.
+            </p>
+
+            <p>
+                KAEL VORN.
+            </p>
+
+            <p>
+                CYRAN VEYL.
             </p>
 
             <div class="divider"></div>
 
             <p class="small-text">
-                EVIDENCE 002 UNLOCKED
+                ALL THREE APPEAR IN THE SAME
+                CLASSIFIED RECORD.
             </p>
 
         </div>
