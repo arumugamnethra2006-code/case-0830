@@ -773,7 +773,7 @@ function playPhoneRing() {
     );
 
 }
-function answerPhone() {
+function answerPhone() {playPhoneRing();
 
     const content =
         document.querySelector(".case-content");
