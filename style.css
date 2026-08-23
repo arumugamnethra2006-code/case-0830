@@ -2302,3 +2302,47 @@ footer {
     }
 
 }
+/* ==========================================
+   INVESTIGATION PROGRESS
+========================================== */
+
+.case-progress {
+    width: 100%;
+    max-width: 700px;
+    margin: 25px auto;
+    padding: 0 20px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    margin-bottom: 8px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.12);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 65%;
+    animation: progressPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes progressPulse {
+
+    from {
+        opacity: 0.45;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
