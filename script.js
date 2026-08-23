@@ -1,48 +1,20 @@
 /* ==========================================
-   CASE 0830 — MAIN SYSTEM
+   CASE 0830 — FINAL INVESTIGATION SYSTEM
 ========================================== */
-
-
-/* ==========================================
-   CHARACTER PORTRAIT SYSTEM
-========================================== */
-
-function characterPortrait(name, image, alt) {
-
-    return `
-        <div class="character-portrait">
-            <img
-                src="assets/characters/${image}"
-                alt="${alt}"
-                class="character-image"
-            >
-        </div>
-    `;
-
-}
 
 
 /* ==========================================
    INITIAL ELEMENTS
 ========================================== */
 
-const loadingScreen =
-    document.getElementById("loading-screen");
+const loadingScreen = document.getElementById("loading-screen");
+const loadingText = document.getElementById("loading-text");
 
-const loadingText =
-    document.getElementById("loading-text");
+const mainInterface = document.getElementById("main-interface");
+const warningScreen = document.getElementById("warning-screen");
 
-const mainInterface =
-    document.getElementById("main-interface");
-
-const warningScreen =
-    document.getElementById("warning-screen");
-
-const beginButton =
-    document.getElementById("begin-button");
-
-const acceptButton =
-    document.getElementById("accept-button");
+const beginButton = document.getElementById("begin-button");
+const acceptButton = document.getElementById("accept-button");
 
 
 /* ==========================================
@@ -50,7 +22,6 @@ const acceptButton =
 ========================================== */
 
 const loadingMessages = [
-
     "INITIALIZING SECURE CONNECTION...",
     "CONNECTING TO VEYLORN DATABASE...",
     "VERIFYING CASE ARCHIVE...",
@@ -58,15 +29,13 @@ const loadingMessages = [
     "WARNING: RECORD NOT FOUND",
     "RECOVERING CLASSIFIED DATA...",
     "ACCESS CHANNEL ESTABLISHED..."
-
 ];
 
 let loadingIndex = 0;
 
-
 function runLoadingSequence() {
 
-    if (!loadingText) return;
+    if (!loadingScreen || !loadingText) return;
 
     loadingText.textContent =
         loadingMessages[loadingIndex];
@@ -84,27 +53,16 @@ function runLoadingSequence() {
 
         setTimeout(() => {
 
-            if (loadingScreen) {
-
-                loadingScreen.style.opacity = "0";
-
-                loadingScreen.style.visibility =
-                    "hidden";
-
-            }
+            loadingScreen.style.opacity = "0";
+            loadingScreen.style.visibility = "hidden";
 
             if (mainInterface) {
-
-                mainInterface.classList.remove(
-                    "hidden"
-                );
-
+                mainInterface.classList.remove("hidden");
             }
 
         }, 900);
 
     }
-
 }
 
 
@@ -118,13 +76,8 @@ if (beginButton) {
         "click",
         () => {
 
-            mainInterface.classList.add(
-                "hidden"
-            );
-
-            warningScreen.classList.remove(
-                "hidden"
-            );
+            mainInterface.classList.add("hidden");
+            warningScreen.classList.remove("hidden");
 
             window.scrollTo(0, 0);
 
@@ -144,14 +97,37 @@ if (acceptButton) {
         "click",
         () => {
 
-            warningScreen.classList.add(
-                "hidden"
-            );
+            warningScreen.classList.add("hidden");
 
             startInvestigation();
 
         }
     );
+
+}
+
+
+/* ==========================================
+   CHARACTER PORTRAIT SYSTEM
+========================================== */
+
+function characterPortrait(
+    name,
+    image,
+    alt
+) {
+
+    return `
+        <div class="character-portrait">
+
+            <img
+                src="assets/characters/${image}"
+                alt="${alt}"
+                class="character-image"
+            >
+
+        </div>
+    `;
 
 }
 
@@ -202,7 +178,7 @@ function startInvestigation() {
 
 
 /* ==========================================
-   ACT 1 — VEYRA
+   ACT 01 — MISSING PERSON
 ========================================== */
 
 function loadActOne() {
@@ -297,7 +273,6 @@ function loadActOne() {
 
                     </div>
 
-
                     <div class="classified-note">
 
                         No police investigation exists
@@ -312,7 +287,6 @@ function loadActOne() {
                         Yet someone created this file.
 
                     </div>
-
 
                     <button
                         class="case-button"
@@ -373,7 +347,7 @@ function openFirstQuestion() {
 
 
 /* ==========================================
-   CONTINUE
+   CONTINUE INVESTIGATION
 ========================================== */
 
 function continueInvestigation() {
@@ -441,16 +415,23 @@ function openEvidenceOne() {
 
             <div class="evidence-paper">
 
-                <p>03 / 01 / 20</p>
+                <p>
+                    03 / 01 / 20
+                </p>
 
-                <p>12 / 05 / 18</p>
+                <p>
+                    12 / 05 / 18
+                </p>
 
-                <p>01 / 22 / 15</p>
+                <p>
+                    01 / 22 / 15
+                </p>
 
-                <p>04 / 01 / 18</p>
+                <p>
+                    04 / 01 / 18
+                </p>
 
             </div>
-
 
             <p class="evidence-instruction">
 
@@ -464,7 +445,6 @@ function openEvidenceOne() {
 
             </p>
 
-
             <input
                 id="evidence-answer"
                 type="text"
@@ -472,14 +452,12 @@ function openEvidenceOne() {
                 autocomplete="off"
             >
 
-
             <button
                 class="case-button"
                 onclick="checkEvidenceOne()"
             >
                 SUBMIT
             </button>
-
 
             <p
                 id="evidence-feedback"
@@ -514,22 +492,17 @@ function checkEvidenceOne() {
         .trim()
         .toLowerCase();
 
-
     if (
         answer === "kael" ||
         answer === "kael vorn"
     ) {
 
         feedback.innerHTML = `
-
-            ACCESS GRANTED.
-            <br><br>
-
+            ACCESS GRANTED.<br><br>
             <span>
                 PERSON OF INTEREST IDENTIFIED:
                 KAEL VORN
             </span>
-
         `;
 
         setTimeout(() => {
@@ -611,14 +584,12 @@ function loadKaelFile() {
 
             </div>
 
-
             <div class="character-warning">
 
                 WHY DOES KAEL VORN'S NAME
                 APPEAR IN VEYRA SOLEN'S FILE?
 
             </div>
-
 
             <button
                 class="case-button"
@@ -672,7 +643,7 @@ function continueAfterKael() {
 
             <button
                 class="case-button"
-                onclick="openNightScene()"
+                onclick="showNightTransition()"
             >
                 CONTINUE
             </button>
@@ -685,10 +656,10 @@ function continueAfterKael() {
 
 
 /* ==========================================
-   NIGHT SCENE
+   SCENE 01
 ========================================== */
 
-function openNightScene() {
+function showNightTransition() {
 
     const content =
         document.querySelector(".case-content");
@@ -724,9 +695,9 @@ function openNightScene() {
 
             <button
                 class="case-button"
-                onclick="answerPhone()"
+                onclick="openNightScene()"
             >
-                ANSWER THE PHONE
+                ENTER SCENE
             </button>
 
         </div>
@@ -737,13 +708,68 @@ function openNightScene() {
 
 
 /* ==========================================
-   PHONE CALL
+   NIGHT SCENE
 ========================================== */
+
+function openNightScene() {
+
+    const content =
+        document.querySelector(".case-content");
+
+    content.innerHTML = `
+
+        <div class="night-scene">
+
+            <div class="scene-overlay">
+
+                <div class="classification">
+                    VEYLORN CITY // 02:17 AM
+                </div>
+
+                <h2>
+                    SOMEONE KNOWS
+                </h2>
+
+                <p>
+
+                    The telephone rings again.
+
+                    <br><br>
+
+                    You answer.
+
+                </p>
+
+                <button
+                    class="case-button"
+                    onclick="answerPhone()"
+                >
+                    ANSWER
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==========================================
+   PHONE SOUND
+========================================== */
+
 function playPhoneRing() {
 
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if (!AudioContext) return;
+
     const audioContext =
-        new (window.AudioContext ||
-        window.webkitAudioContext)();
+        new AudioContext();
 
     const oscillator =
         audioContext.createOscillator();
@@ -773,7 +799,15 @@ function playPhoneRing() {
     );
 
 }
-function answerPhone() {playPhoneRing();
+
+
+/* ==========================================
+   PHONE CALL
+========================================== */
+
+function answerPhone() {
+
+    playPhoneRing();
 
     const content =
         document.querySelector(".case-content");
@@ -823,7 +857,7 @@ function answerPhone() {playPhoneRing();
 
 
 /* ==========================================
-   CYRAN FILE
+   CYRAN VEYL
 ========================================== */
 
 function continueAfterCall() {
@@ -885,14 +919,12 @@ function continueAfterCall() {
 
             </div>
 
-
             <div class="character-warning">
 
                 CYRAN VEYL WAS THE LAST PERSON
                 TO ACCESS VEYRA SOLEN'S FILE.
 
             </div>
-
 
             <button
                 class="case-button"
@@ -953,11 +985,9 @@ function openCyranEvidence() {
 
             </div>
 
-
             <p class="evidence-instruction">
 
-                Someone deleted the record
-                immediately after accessing it.
+                Someone deleted the record.
 
                 <br><br>
 
@@ -970,7 +1000,6 @@ function openCyranEvidence() {
                 </strong>
 
             </p>
-
 
             <button
                 class="case-button"
@@ -1008,9 +1037,17 @@ function inspectCyranConnection() {
             </h2>
 
             <p>
+
                 Three names.
+
+                <br>
+
                 One missing woman.
+
+                <br>
+
                 And someone is lying.
+
             </p>
 
             <div class="choice-grid">
@@ -1046,7 +1083,7 @@ function inspectCyranConnection() {
 
 
 /* ==========================================
-   CHOICE RESULT
+   CHOOSE SUSPECT
 ========================================== */
 
 function chooseSuspect(choice) {
@@ -1057,7 +1094,6 @@ function chooseSuspect(choice) {
     let title = "";
     let message = "";
     let clue = "";
-
 
     if (choice === "kael") {
 
@@ -1094,7 +1130,6 @@ function chooseSuspect(choice) {
             "The note was written after her disappearance.";
 
     }
-
 
     content.innerHTML = `
 
@@ -1148,7 +1183,6 @@ function openNewClue(choice) {
     let clueTitle = "";
     let clueText = "";
 
-
     if (choice === "kael") {
 
         clueTitle =
@@ -1179,7 +1213,6 @@ function openNewClue(choice) {
 
     }
 
-
     content.innerHTML = `
 
         <div class="evidence-screen">
@@ -1202,7 +1235,7 @@ function openNewClue(choice) {
 
             <button
                 class="case-button"
-                onclick="continueAfterChoice('${choice}')"
+                onclick="continueAfterChoice()"
             >
                 CONTINUE INVESTIGATION
             </button>
@@ -1218,7 +1251,7 @@ function openNewClue(choice) {
    DEEP ARCHIVE
 ========================================== */
 
-function continueAfterChoice(choice) {
+function continueAfterChoice() {
 
     const content =
         document.querySelector(".case-content");
@@ -1242,7 +1275,6 @@ function continueAfterChoice(choice) {
 
             </p>
 
-
             <div class="archive-files">
 
                 <button
@@ -1253,7 +1285,6 @@ function continueAfterChoice(choice) {
                     <span>VEYRA SOLEN</span>
                 </button>
 
-
                 <button
                     class="archive-file"
                     onclick="openArchiveFile('KAEL')"
@@ -1262,7 +1293,6 @@ function continueAfterChoice(choice) {
                     <span>KAEL VORN</span>
                 </button>
 
-
                 <button
                     class="archive-file"
                     onclick="openArchiveFile('CYRAN')"
@@ -1270,7 +1300,6 @@ function continueAfterChoice(choice) {
                     FILE 03
                     <span>CYRAN VEYL</span>
                 </button>
-
 
                 <button
                     class="archive-file"
@@ -1290,7 +1319,7 @@ function continueAfterChoice(choice) {
 
 
 /* ==========================================
-   ARCHIVE FILES
+   OPEN ARCHIVE FILE
 ========================================== */
 
 function openArchiveFile(file) {
@@ -1301,93 +1330,64 @@ function openArchiveFile(file) {
     let title = "";
     let text = "";
 
-
     if (file === "VEYRA") {
 
         title = "VEYRA SOLEN";
 
         text = `
-
             Missing.
-
             <br><br>
-
             Official investigation: NONE.
-
             <br><br>
-
             Last confirmed sighting:
             UNKNOWN.
-
         `;
 
     }
-
 
     else if (file === "KAEL") {
 
         title = "KAEL VORN";
 
         text = `
-
             No official record.
-
             <br><br>
-
             Name appears repeatedly
             inside Veyra's private files.
-
         `;
 
     }
-
 
     else if (file === "CYRAN") {
 
         title = "CYRAN VEYL";
 
         text = `
-
             Investigator.
-
             <br><br>
-
             Accessed the case archive
             at 02:17 AM.
-
             <br><br>
-
             Deleted the access record.
-
         `;
 
     }
-
 
     else {
 
         title = "CASE 0830";
 
         text = `
-
             THREE PEOPLE.
-
             <br><br>
-
             ONE DISAPPEARANCE.
-
             <br><br>
-
             NO OFFICIAL CASE.
-
             <br><br>
-
             SOMEONE IS WATCHING.
-
         `;
 
     }
-
 
     content.innerHTML = `
 
@@ -1409,7 +1409,6 @@ function openArchiveFile(file) {
 
             </div>
 
-
             <button
                 class="case-button"
                 onclick="continueAfterArchive()"
@@ -1425,7 +1424,7 @@ function openArchiveFile(file) {
 
 
 /* ==========================================
-   ARCHIVE SECURITY ALERT
+   ARCHIVE ALERT
 ========================================== */
 
 function continueAfterArchive() {
@@ -1500,12 +1499,12 @@ function openFinalPuzzle() {
                 Veyra's last file:
                 <strong>08:30</strong>
 
-                <br><br>
+                <br>
 
                 Cyran's access:
                 <strong>02:17</strong>
 
-                <br><br>
+                <br>
 
                 The recovered note:
                 <strong>11:13</strong>
@@ -1524,7 +1523,6 @@ function openFinalPuzzle() {
 
             </p>
 
-
             <input
                 id="final-answer"
                 type="text"
@@ -1533,14 +1531,12 @@ function openFinalPuzzle() {
                 maxlength="4"
             >
 
-
             <button
                 class="case-button"
                 onclick="checkFinalPuzzle()"
             >
                 DECRYPT
             </button>
-
 
             <p
                 id="final-feedback"
@@ -1555,7 +1551,7 @@ function openFinalPuzzle() {
 
 
 /* ==========================================
-   CHECK FINAL PUZZLE
+   FINAL PUZZLE ANSWER
 ========================================== */
 
 function checkFinalPuzzle() {
@@ -1573,19 +1569,13 @@ function checkFinalPuzzle() {
     const answer =
         input.value.trim();
 
-
     if (answer === "0830") {
 
         feedback.innerHTML = `
-
-            ACCESS GRANTED.
-
-            <br><br>
-
+            ACCESS GRANTED.<br><br>
             <span>
                 THE ARCHIVE IS OPEN.
             </span>
-
         `;
 
         setTimeout(() => {
@@ -1680,7 +1670,6 @@ function openFinalReveal() {
 
             <div class="divider"></div>
 
-
             <p class="birthday-message">
 
                 This investigation was never really
@@ -1710,7 +1699,6 @@ function openFinalReveal() {
 
             </p>
 
-
             <div class="birthday-name">
 
                 HAPPY BIRTHDAY,
@@ -1722,7 +1710,6 @@ function openFinalReveal() {
 
             </div>
 
-
             <p class="small-text">
 
                 CASE STATUS:
@@ -1733,11 +1720,24 @@ function openFinalReveal() {
 
             </p>
 
+            <button
+                class="case-button"
+                onclick="showBirthdayMessage()"
+            >
+                ONE LAST MESSAGE
+            </button>
+
         </div>
 
     `;
 
 }
+
+
+/* ==========================================
+   PERSONAL BIRTHDAY MESSAGE
+========================================== */
+
 function showBirthdayMessage() {
 
     const content =
@@ -1813,8 +1813,9 @@ function showBirthdayMessage() {
 
 }
 
+
 /* ==========================================
-   START
+   START SYSTEM
 ========================================== */
 
 runLoadingSequence();
