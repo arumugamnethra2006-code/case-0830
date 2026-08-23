@@ -2137,3 +2137,89 @@ footer {
     }
 
 }
+/* ==========================================
+   INVESTIGATION CHOICES
+========================================== */
+
+.choice-grid {
+    width: min(850px, 95%);
+
+    margin: 55px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.choice-button {
+    min-height: 130px;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 27, 49, 0.9),
+            rgba(8, 10, 19, 0.95)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+
+    color: var(--soft);
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.choice-button:hover {
+    transform: translateY(-8px);
+
+    border-color:
+        rgba(212,169,92,0.65);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(84,31,50,0.5),
+            rgba(15,18,31,0.95)
+        );
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.45);
+
+    color: var(--white);
+}
+
+.choice-button:active {
+    transform: translateY(-3px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .choice-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .choice-button {
+        min-height: 90px;
+    }
+
+}
