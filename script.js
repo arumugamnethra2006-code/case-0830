@@ -1705,7 +1705,80 @@ function openFinalReveal() {
     `;
 
 }
+function showBirthdayMessage() {
 
+    const content =
+        document.querySelector(".case-content");
+
+    content.innerHTML = `
+
+        <div class="revelation birthday-reveal">
+
+            <div class="classification">
+                CASE 0830 // PERSONAL FILE
+            </div>
+
+            <h2>
+                DEAR SUNSHINE,
+            </h2>
+
+            <div class="divider"></div>
+
+            <p class="birthday-message">
+
+                If you ever wonder whether
+                you matter to people,
+
+                <br><br>
+
+                I hope you remember this case.
+
+                <br><br>
+
+                Because someone took the time
+                to build an entire investigation
+                just to remind you that your
+                existence matters.
+
+                <br><br>
+
+                You are loved.
+                You are remembered.
+                You are someone's favourite
+                kind of chaos.
+
+                <br><br>
+
+                And no matter how many years pass,
+
+                <br><br>
+
+                you'll always be my
+                <strong>Thango.</strong>
+
+            </p>
+
+            <div class="birthday-name">
+
+                HAPPY BIRTHDAY,
+
+                <br>
+
+                <span>
+                    SUNSHINE ❤️
+                </span>
+
+            </div>
+
+            <p class="small-text">
+                CASE 0830 // CLOSED
+            </p>
+
+        </div>
+
+    `;
+
+}
 
 /* ==========================================
    START
