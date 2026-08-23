@@ -205,7 +205,11 @@ function loadActOne() {
 
 
                 <div class="file-card">
-
+${characterPortrait(
+    "veyra",
+    "veyra-solen.jpg",
+    "Veyra Solen"
+)}
                     <div class="file-number">
                         FILE 001
                     </div>
