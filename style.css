@@ -2401,3 +2401,129 @@ footer {
     }
 
 }
+/* ==========================================
+   NIGHT PHONE SCENE
+========================================== */
+
+.night-scene {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.night-scene::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.06),
+            transparent 55%
+        );
+    animation: nightPulse 4s ease-in-out infinite;
+}
+
+.scene-overlay {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+    padding: 40px 25px;
+}
+
+.scene-overlay h2 {
+    font-size: clamp(34px, 7vw, 70px);
+    letter-spacing: 8px;
+    margin: 25px 0;
+    animation: phoneReveal 2s ease forwards;
+}
+
+.scene-overlay p {
+    line-height: 1.8;
+}
+
+.phone-scene {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: phoneSceneIn 1.5s ease forwards;
+}
+
+.phone-text {
+    margin: 40px 0;
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 2;
+}
+
+.phone-text p {
+    opacity: 0;
+    animation: dialogueAppear 1s ease forwards;
+}
+
+.phone-text p:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.phone-text p:nth-child(3) {
+    animation-delay: 2.2s;
+}
+
+@keyframes nightPulse {
+
+    0%, 100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+}
+
+@keyframes phoneReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes phoneSceneIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+@keyframes dialogueAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
