@@ -537,14 +537,13 @@ function loadKaelFile() {
 
                 <div class="character-portrait">
 
-                    <div class="portrait-placeholder">
-                        PORTRAIT
-                        <br>
-                        UNAVAILABLE
-                    </div>
+    <img
+        src="assets/characters/kael-vorn.jpg"
+        alt="Kael Vorn"
+        class="character-image"
+    >
 
-                </div>
-
+</div>
 
                 <div class="character-information">
 
