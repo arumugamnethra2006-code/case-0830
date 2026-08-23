@@ -2223,3 +2223,82 @@ footer {
     }
 
 }
+/* ==========================================
+   FINAL BIRTHDAY REVEAL
+========================================== */
+
+.birthday-reveal {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 25px;
+    animation: birthdayReveal 1.5s ease forwards;
+}
+
+.birthday-reveal h2 {
+    font-size: clamp(28px, 5vw, 52px);
+    letter-spacing: 4px;
+    margin: 20px 0;
+}
+
+.birthday-message {
+    max-width: 650px;
+    line-height: 1.9;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.birthday-name {
+    margin-top: 35px;
+    font-size: 18px;
+    letter-spacing: 5px;
+}
+
+.birthday-name span {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: clamp(32px, 7vw, 64px);
+    letter-spacing: 8px;
+    font-weight: bold;
+    animation: sunshineGlow 2s ease-in-out infinite alternate;
+}
+
+.case-closed {
+    letter-spacing: 3px;
+    margin-left: 5px;
+}
+
+.birthday-reveal .case-button {
+    margin-top: 35px;
+}
+
+@keyframes birthdayReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes sunshineGlow {
+
+    from {
+        opacity: 0.65;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.03);
+    }
+
+}
