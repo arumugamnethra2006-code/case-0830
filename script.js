@@ -861,6 +861,207 @@ ${characterPortrait(
 ========================================== */
 
 runLoadingSequence();
+/* ==========================================
+   FINAL PUZZLE
+========================================== */
+
+function openFinalPuzzle() {
+
+    const content =
+        document.querySelector(".case-content");
+
+    content.innerHTML = `
+
+        <div class="evidence-screen">
+
+            <div class="classification">
+                FINAL EVIDENCE
+            </div>
+
+            <h2>
+                THE THREE NUMBERS
+            </h2>
+
+            <p class="evidence-instruction">
+
+                Every important event happened
+                at the same time.
+
+                <br><br>
+
+                Veyra's last file:
+                <strong>08:30</strong>
+
+                <br>
+
+                Cyran's access:
+                <strong>02:17</strong>
+
+                <br>
+
+                The recovered note:
+                <strong>11:13</strong>
+
+                <br><br>
+
+                Three times.
+
+                One message.
+
+                <br><br>
+
+                What number do they create?
+
+            </p>
+
+            <input
+                id="final-answer"
+                type="text"
+                placeholder="ENTER 4 DIGITS"
+                autocomplete="off"
+                maxlength="4"
+            >
+
+            <button
+                class="case-button"
+                onclick="checkFinalPuzzle()"
+            >
+                DECRYPT
+            </button>
+
+            <p
+                id="final-feedback"
+                class="feedback"
+            ></p>
+
+        </div>
+
+    `;
+
+}
+function checkFinalPuzzle() {
+
+    const input =
+        document.getElementById(
+            "final-answer"
+        );
+
+    const feedback =
+        document.getElementById(
+            "final-feedback"
+        );
+
+    const answer =
+        input.value.trim();
+
+
+    if (answer === "0830") {
+
+        feedback.innerHTML = `
+            ACCESS GRANTED.<br><br>
+            <span>
+                THE ARCHIVE IS OPEN.
+            </span>
+        `;
+
+        setTimeout(() => {
+
+            openTruthArchive();
+
+        }, 1800);
+
+    }
+
+    else {
+
+        feedback.textContent =
+            "DECRYPTION FAILED — RECHECK THE EVIDENCE.";
+
+    }
+
+}
+function openTruthArchive() {
+
+    const content =
+        document.querySelector(".case-content");
+
+    content.innerHTML = `
+
+        <div class="revelation">
+
+            <div class="classification">
+                LEVEL ZERO // TRUTH
+            </div>
+
+            <h2>
+                CASE 0830
+            </h2>
+
+            <p>
+                The case was never about
+                finding Veyra.
+            </p>
+
+            <p>
+                It was about finding
+                the person she trusted.
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="small-text">
+                FINAL RECORD UNLOCKED
+            </p>
+
+            <button
+                class="case-button"
+                onclick="openFinalReveal()"
+            >
+                OPEN FINAL RECORD
+            </button>
+
+        </div>
+
+    `;
+
+}
+function openFinalReveal() {
+
+    const content =
+        document.querySelector(".case-content");
+
+    content.innerHTML = `
+
+        <div class="revelation final-reveal">
+
+            <div class="classification">
+                CASE 0830 // DECLASSIFIED
+            </div>
+
+            <h2>
+                YOU FOUND HER.
+            </h2>
+
+            <p>
+                But Veyra was never missing.
+            </p>
+
+            <p>
+                She was waiting for someone
+                who would care enough to look.
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="small-text">
+                END OF INVESTIGATION
+            </p>
+
+        </div>
+
+    `;
+
+}
 function continueAfterCall() {
 
     const content =
