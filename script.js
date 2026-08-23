@@ -1557,7 +1557,12 @@ function continueAfterArchive() {
             </p>
 
         </div>
-
+<button
+    class="case-button"
+    onclick="openFinalPuzzle()"
+>
+    DECRYPT ARCHIVE
+</button>
     `;
 
 }
