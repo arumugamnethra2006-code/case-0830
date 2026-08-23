@@ -2527,3 +2527,42 @@ footer {
     }
 
 }
+/* ==========================================
+   FINAL MESSAGE EFFECT
+========================================== */
+
+.birthday-message {
+    animation: messageReveal 2s ease forwards;
+}
+
+.birthday-name {
+    animation: nameReveal 2.5s ease forwards;
+}
+
+@keyframes messageReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes nameReveal {
+
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
