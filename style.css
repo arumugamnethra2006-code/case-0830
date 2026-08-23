@@ -2017,3 +2017,123 @@ footer {
 
     letter-spacing: 4px;
 }
+/* ==========================================
+   CHARACTER FILE — CINEMATIC
+========================================== */
+
+.character-file {
+    min-height: 75vh;
+
+    padding: 70px 20px;
+
+    text-align: center;
+
+    animation:
+        characterReveal 1s ease forwards;
+}
+
+@keyframes characterReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.character-file .character-layout {
+    max-width: 1000px;
+
+    margin: 50px auto;
+
+    padding: 40px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 27, 49, 0.85),
+            rgba(7, 9, 18, 0.95)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,0.5);
+}
+
+.character-file .character-portrait {
+    flex-shrink: 0;
+}
+
+.character-file .character-warning {
+    max-width: 750px;
+
+    margin: 35px auto;
+
+    font-size: 10px;
+
+    line-height: 2;
+
+    letter-spacing: 2px;
+}
+
+.character-file .case-button {
+    margin-top: 10px;
+}
+
+
+/* VEYRA FILE IMAGE */
+
+.file-card > .character-portrait {
+    width: 220px;
+    height: 290px;
+
+    margin: 0 auto 35px;
+
+    overflow: hidden;
+}
+
+.file-card > .character-portrait .character-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* CHARACTER IMAGE HOVER */
+
+.character-file .character-portrait {
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.character-file .character-portrait:hover {
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.5);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 750px) {
+
+    .character-file {
+        padding: 50px 15px;
+    }
+
+    .character-file .character-layout {
+        padding: 25px 15px;
+    }
+
+}
