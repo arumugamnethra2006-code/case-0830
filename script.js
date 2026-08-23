@@ -2,14 +2,47 @@
    CASE 0830 — MAIN SYSTEM
 ========================================== */
 
-const loadingScreen = document.getElementById("loading-screen");
-const loadingText = document.getElementById("loading-text");
 
-const mainInterface = document.getElementById("main-interface");
-const warningScreen = document.getElementById("warning-screen");
+/* ==========================================
+   CHARACTER PORTRAIT SYSTEM
+========================================== */
 
-const beginButton = document.getElementById("begin-button");
-const acceptButton = document.getElementById("accept-button");
+function characterPortrait(name, image, alt) {
+
+    return `
+        <div class="character-portrait">
+            <img
+                src="assets/characters/${image}"
+                alt="${alt}"
+                class="character-image"
+            >
+        </div>
+    `;
+
+}
+
+
+/* ==========================================
+   INITIAL ELEMENTS
+========================================== */
+
+const loadingScreen =
+    document.getElementById("loading-screen");
+
+const loadingText =
+    document.getElementById("loading-text");
+
+const mainInterface =
+    document.getElementById("main-interface");
+
+const warningScreen =
+    document.getElementById("warning-screen");
+
+const beginButton =
+    document.getElementById("begin-button");
+
+const acceptButton =
+    document.getElementById("accept-button");
 
 
 /* ==========================================
@@ -17,6 +50,7 @@ const acceptButton = document.getElementById("accept-button");
 ========================================== */
 
 const loadingMessages = [
+
     "INITIALIZING SECURE CONNECTION...",
     "CONNECTING TO VEYLORN DATABASE...",
     "VERIFYING CASE ARCHIVE...",
@@ -24,11 +58,15 @@ const loadingMessages = [
     "WARNING: RECORD NOT FOUND",
     "RECOVERING CLASSIFIED DATA...",
     "ACCESS CHANNEL ESTABLISHED..."
+
 ];
 
 let loadingIndex = 0;
 
+
 function runLoadingSequence() {
+
+    if (!loadingText) return;
 
     loadingText.textContent =
         loadingMessages[loadingIndex];
@@ -46,18 +84,27 @@ function runLoadingSequence() {
 
         setTimeout(() => {
 
-            loadingScreen.style.opacity = "0";
+            if (loadingScreen) {
 
-            loadingScreen.style.visibility =
-                "hidden";
+                loadingScreen.style.opacity = "0";
 
-            mainInterface.classList.remove(
-                "hidden"
-            );
+                loadingScreen.style.visibility =
+                    "hidden";
+
+            }
+
+            if (mainInterface) {
+
+                mainInterface.classList.remove(
+                    "hidden"
+                );
+
+            }
 
         }, 900);
 
     }
+
 }
 
 
@@ -65,40 +112,48 @@ function runLoadingSequence() {
    BEGIN INVESTIGATION
 ========================================== */
 
-beginButton.addEventListener(
-    "click",
-    () => {
+if (beginButton) {
 
-        mainInterface.classList.add(
-            "hidden"
-        );
+    beginButton.addEventListener(
+        "click",
+        () => {
 
-        warningScreen.classList.remove(
-            "hidden"
-        );
+            mainInterface.classList.add(
+                "hidden"
+            );
 
-        window.scrollTo(0, 0);
+            warningScreen.classList.remove(
+                "hidden"
+            );
 
-    }
-);
+            window.scrollTo(0, 0);
+
+        }
+    );
+
+}
 
 
 /* ==========================================
    ACCEPT WARNING
 ========================================== */
 
-acceptButton.addEventListener(
-    "click",
-    () => {
+if (acceptButton) {
 
-        warningScreen.classList.add(
-            "hidden"
-        );
+    acceptButton.addEventListener(
+        "click",
+        () => {
 
-        startInvestigation();
+            warningScreen.classList.add(
+                "hidden"
+            );
 
-    }
-);
+            startInvestigation();
+
+        }
+    );
+
+}
 
 
 /* ==========================================
@@ -107,18 +162,8 @@ acceptButton.addEventListener(
 
 function startInvestigation() {
 
-    /*
-        ACT 1 will be loaded here.
-
-        We will NOT create separate websites.
-
-        Every chapter, character, evidence file,
-        puzzle, audio, video and ending will
-        exist inside this same application.
-    */
-
     document.body.innerHTML = `
-    
+
         <div class="investigation-start">
 
             <div class="case-loading">
@@ -127,7 +172,9 @@ function startInvestigation() {
                     ACCESS GRANTED
                 </div>
 
-                <h1>CASE 0830</h1>
+                <h1>
+                    CASE 0830
+                </h1>
 
                 <div class="divider"></div>
 
@@ -155,7 +202,7 @@ function startInvestigation() {
 
 
 /* ==========================================
-   ACT 1
+   ACT 1 — VEYRA
 ========================================== */
 
 function loadActOne() {
@@ -187,17 +234,19 @@ function loadActOne() {
                     ACT 01 // MISSING PERSON
                 </div>
 
-
                 <h1>
                     THE DISAPPEARANCE
                 </h1>
-
 
                 <p class="case-intro">
 
                     A person disappeared.
 
+                    <br><br>
+
                     No official investigation exists.
+
+                    <br><br>
 
                     Yet someone created a file.
 
@@ -205,11 +254,13 @@ function loadActOne() {
 
 
                 <div class="file-card">
-${characterPortrait(
-    "veyra",
-    "veyra-solen.jpg",
-    "Veyra Solen"
-)}
+
+                    ${characterPortrait(
+                        "veyra",
+                        "veyra-solen.jpg",
+                        "Veyra Solen"
+                    )}
+
                     <div class="file-number">
                         FILE 001
                     </div>
@@ -267,9 +318,7 @@ ${characterPortrait(
                         class="case-button"
                         onclick="openFirstQuestion()"
                     >
-
                         INVESTIGATE
-
                     </button>
 
                 </div>
@@ -290,9 +339,7 @@ ${characterPortrait(
 function openFirstQuestion() {
 
     const content =
-        document.querySelector(
-            ".case-content"
-        );
+        document.querySelector(".case-content");
 
     content.innerHTML = `
 
@@ -315,9 +362,7 @@ function openFirstQuestion() {
                 class="case-button"
                 onclick="continueInvestigation()"
             >
-
                 I DON'T KNOW
-
             </button>
 
         </div>
@@ -334,9 +379,7 @@ function openFirstQuestion() {
 function continueInvestigation() {
 
     const content =
-        document.querySelector(
-            ".case-content"
-        );
+        document.querySelector(".case-content");
 
     content.innerHTML = `
 
@@ -365,9 +408,7 @@ function continueInvestigation() {
                 class="case-button"
                 onclick="openEvidenceOne()"
             >
-
                 OPEN EVIDENCE 001
-
             </button>
 
         </div>
@@ -384,9 +425,7 @@ function continueInvestigation() {
 function openEvidenceOne() {
 
     const content =
-        document.querySelector(
-            ".case-content"
-        );
+        document.querySelector(".case-content");
 
     content.innerHTML = `
 
@@ -402,21 +441,13 @@ function openEvidenceOne() {
 
             <div class="evidence-paper">
 
-                <p>
-                    03 / 01 / 20
-                </p>
+                <p>03 / 01 / 20</p>
 
-                <p>
-                    12 / 05 / 18
-                </p>
+                <p>12 / 05 / 18</p>
 
-                <p>
-                    01 / 22 / 15
-                </p>
+                <p>01 / 22 / 15</p>
 
-                <p>
-                    04 / 01 / 18
-                </p>
+                <p>04 / 01 / 18</p>
 
             </div>
 
@@ -446,9 +477,7 @@ function openEvidenceOne() {
                 class="case-button"
                 onclick="checkEvidenceOne()"
             >
-
                 SUBMIT
-
             </button>
 
 
@@ -471,14 +500,12 @@ function openEvidenceOne() {
 function checkEvidenceOne() {
 
     const input =
-        document
-        .getElementById(
+        document.getElementById(
             "evidence-answer"
         );
 
     const feedback =
-        document
-        .getElementById(
+        document.getElementById(
             "evidence-feedback"
         );
 
@@ -489,17 +516,20 @@ function checkEvidenceOne() {
 
 
     if (
-        answer === "kael"
-        ||
+        answer === "kael" ||
         answer === "kael vorn"
     ) {
 
         feedback.innerHTML = `
-            ACCESS GRANTED.<br><br>
+
+            ACCESS GRANTED.
+            <br><br>
+
             <span>
-            PERSON OF INTEREST IDENTIFIED:
-            KAEL VORN
+                PERSON OF INTEREST IDENTIFIED:
+                KAEL VORN
             </span>
+
         `;
 
         setTimeout(() => {
@@ -525,9 +555,7 @@ function checkEvidenceOne() {
 function loadKaelFile() {
 
     const content =
-        document.querySelector(
-            ".case-content"
-        );
+        document.querySelector(".case-content");
 
     content.innerHTML = `
 
@@ -539,15 +567,11 @@ function loadKaelFile() {
 
             <div class="character-layout">
 
-                <div class="character-portrait">
-
-    <img
-        src="assets/characters/kael-vorn.jpg"
-        alt="Kael Vorn"
-        class="character-image"
-    >
-
-</div>
+                ${characterPortrait(
+                    "kael",
+                    "kael-vorn.jpg",
+                    "Kael Vorn"
+                )}
 
                 <div class="character-information">
 
@@ -600,9 +624,7 @@ function loadKaelFile() {
                 class="case-button"
                 onclick="continueAfterKael()"
             >
-
                 INVESTIGATE CONNECTION
-
             </button>
 
         </div>
@@ -613,15 +635,13 @@ function loadKaelFile() {
 
 
 /* ==========================================
-   NEXT STAGE
+   KAEL CONNECTION
 ========================================== */
 
 function continueAfterKael() {
 
     const content =
-        document.querySelector(
-            ".case-content"
-        );
+        document.querySelector(".case-content");
 
     content.innerHTML = `
 
@@ -652,11 +672,9 @@ function continueAfterKael() {
 
             <button
                 class="case-button"
-                onclick="showComingSoon()"
+                onclick="openNightScene()"
             >
-
                 CONTINUE
-
             </button>
 
         </div>
@@ -667,22 +685,13 @@ function continueAfterKael() {
 
 
 /* ==========================================
-   TEMPORARY END
+   NIGHT SCENE
 ========================================== */
 
-function showComingSoon() {
+function openNightScene() {
 
     const content =
-        document.querySelector(
-            ".case-content"
-        );
-
-   function showComingSoon() {
-
-    const content =
-        document.querySelector(
-            ".case-content"
-        );
+        document.querySelector(".case-content");
 
     content.innerHTML = `
 
@@ -706,6 +715,8 @@ function showComingSoon() {
 
                 The city is still awake.
 
+                <br><br>
+
                 Somewhere beneath the rain,
                 a telephone begins to ring.
 
@@ -713,11 +724,9 @@ function showComingSoon() {
 
             <button
                 class="case-button"
-                onclick="openNightScene()"
+                onclick="answerPhone()"
             >
-
-                ENTER SCENE
-
+                ANSWER THE PHONE
             </button>
 
         </div>
@@ -725,59 +734,16 @@ function showComingSoon() {
     `;
 
 }
-function openNightScene() {
 
-    const content =
-        document.querySelector(
-            ".case-content"
-        );
 
-    content.innerHTML = `
+/* ==========================================
+   PHONE CALL
+========================================== */
 
-        <div class="night-scene">
-
-            <div class="scene-overlay">
-
-                <div class="classification">
-                    VEYLORN CITY // 02:17 AM
-                </div>
-
-                <h2>
-                    SOMEONE KNOWS
-                </h2>
-
-                <p>
-
-                    The telephone rings again.
-
-                    <br><br>
-
-                    You answer.
-
-                </p>
-
-                <button
-                    class="case-button"
-                    onclick="answerPhone()"
-                >
-
-                    ANSWER
-
-                </button>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
 function answerPhone() {
 
     const content =
-        document.querySelector(
-            ".case-content"
-        );
+        document.querySelector(".case-content");
 
     content.innerHTML = `
 
@@ -813,9 +779,7 @@ function answerPhone() {
                 class="case-button"
                 onclick="continueAfterCall()"
             >
-
                 TRACE THE CALL
-
             </button>
 
         </div>
@@ -823,245 +787,12 @@ function answerPhone() {
     `;
 
 }
-   <h2>
-                INVESTIGATION CONTINUES.
-            </h2>
 
-            <p>
-                More evidence is being recovered.
-            </p>
-
-            <p class="small-text">
-                THIS IS ONLY THE BEGINNING.
-            </p>
-
-        </div>
-
-    `;
-
-}
-/* ==========================================
-   CHARACTER PORTRAIT SYSTEM
-========================================== */
-
-function characterPortrait(name, image, alt) {
-
-    return `
-${characterPortrait(
-    "kael",
-    "kael-vorn.jpg",
-    "Kael Vorn"
-)}
-    `;
-
-}
 
 /* ==========================================
-   START
+   CYRAN FILE
 ========================================== */
 
-runLoadingSequence();
-/* ==========================================
-   FINAL PUZZLE
-========================================== */
-
-function openFinalPuzzle() {
-
-    const content =
-        document.querySelector(".case-content");
-
-    content.innerHTML = `
-
-        <div class="evidence-screen">
-
-            <div class="classification">
-                FINAL EVIDENCE
-            </div>
-
-            <h2>
-                THE THREE NUMBERS
-            </h2>
-
-            <p class="evidence-instruction">
-
-                Every important event happened
-                at the same time.
-
-                <br><br>
-
-                Veyra's last file:
-                <strong>08:30</strong>
-
-                <br>
-
-                Cyran's access:
-                <strong>02:17</strong>
-
-                <br>
-
-                The recovered note:
-                <strong>11:13</strong>
-
-                <br><br>
-
-                Three times.
-
-                One message.
-
-                <br><br>
-
-                What number do they create?
-
-            </p>
-
-            <input
-                id="final-answer"
-                type="text"
-                placeholder="ENTER 4 DIGITS"
-                autocomplete="off"
-                maxlength="4"
-            >
-
-            <button
-                class="case-button"
-                onclick="checkFinalPuzzle()"
-            >
-                DECRYPT
-            </button>
-
-            <p
-                id="final-feedback"
-                class="feedback"
-            ></p>
-
-        </div>
-
-    `;
-
-}
-function checkFinalPuzzle() {
-
-    const input =
-        document.getElementById(
-            "final-answer"
-        );
-
-    const feedback =
-        document.getElementById(
-            "final-feedback"
-        );
-
-    const answer =
-        input.value.trim();
-
-
-    if (answer === "0830") {
-
-        feedback.innerHTML = `
-            ACCESS GRANTED.<br><br>
-            <span>
-                THE ARCHIVE IS OPEN.
-            </span>
-        `;
-
-        setTimeout(() => {
-
-            openTruthArchive();
-
-        }, 1800);
-
-    }
-
-    else {
-
-        feedback.textContent =
-            "DECRYPTION FAILED — RECHECK THE EVIDENCE.";
-
-    }
-
-}
-function openTruthArchive() {
-
-    const content =
-        document.querySelector(".case-content");
-
-    content.innerHTML = `
-
-        <div class="revelation">
-
-            <div class="classification">
-                LEVEL ZERO // TRUTH
-            </div>
-
-            <h2>
-                CASE 0830
-            </h2>
-
-            <p>
-                The case was never about
-                finding Veyra.
-            </p>
-
-            <p>
-                It was about finding
-                the person she trusted.
-            </p>
-
-            <div class="divider"></div>
-
-            <p class="small-text">
-                FINAL RECORD UNLOCKED
-            </p>
-
-            <button
-                class="case-button"
-                onclick="openFinalReveal()"
-            >
-                OPEN FINAL RECORD
-            </button>
-
-        </div>
-
-    `;
-
-}
-function openFinalReveal() {      const content =         document.querySelector(".case-content");      content.innerHTML = `          <div class="revelation birthday-reveal">              <div class="classification">                 CASE 0830 // FINAL RECORD             </div>              <h2>                 YOU FOUND THE TRUTH.             </h2>              <div class="divider"></div>              <p class="birthday-message">                  This investigation was never really                 about Veyra.                  <br><br>                  It was created for someone                 who deserves to know how much                 she means to the people around her.                  <br><br>                  Someone whose existence has                 left evidence everywhere:                  <br><br>                  in memories,<br>                 in laughter,<br>                 in late-night conversations,<br>                 in the little things nobody else notices.              </p>              <div class="birthday-name">                  HAPPY BIRTHDAY,                 <br>                 <span>SUNSHINE</span>              </div>              <p class="small-text">                  CASE STATUS:                 <span class="case-closed">                     CLOSED                 </span>              </p>          </div>      `;  }
-
-    const content =
-        document.querySelector(".case-content");
-
-    content.innerHTML = `
-
-        <div class="revelation final-reveal">
-
-            <div class="classification">
-                CASE 0830 // DECLASSIFIED
-            </div>
-
-            <h2>
-                YOU FOUND HER.
-            </h2>
-
-            <p>
-                But Veyra was never missing.
-            </p>
-
-            <p>
-                She was waiting for someone
-                who would care enough to look.
-            </p>
-
-            <div class="divider"></div>
-
-            <p class="small-text">
-                END OF INVESTIGATION
-            </p>
-
-        </div>
-
-    `;
-
-}
 function continueAfterCall() {
 
     const content =
@@ -1121,6 +852,7 @@ function continueAfterCall() {
 
             </div>
 
+
             <div class="character-warning">
 
                 CYRAN VEYL WAS THE LAST PERSON
@@ -1128,13 +860,12 @@ function continueAfterCall() {
 
             </div>
 
+
             <button
                 class="case-button"
                 onclick="openCyranEvidence()"
             >
-
                 VIEW RECORD
-
             </button>
 
         </div>
@@ -1142,6 +873,12 @@ function continueAfterCall() {
     `;
 
 }
+
+
+/* ==========================================
+   CYRAN EVIDENCE
+========================================== */
+
 function openCyranEvidence() {
 
     const content =
@@ -1183,6 +920,7 @@ function openCyranEvidence() {
 
             </div>
 
+
             <p class="evidence-instruction">
 
                 Someone deleted the record
@@ -1192,7 +930,7 @@ function openCyranEvidence() {
 
                 The question is:
 
-                <br>
+                <br><br>
 
                 <strong>
                     WHY?
@@ -1200,13 +938,12 @@ function openCyranEvidence() {
 
             </p>
 
+
             <button
                 class="case-button"
                 onclick="inspectCyranConnection()"
             >
-
                 INVESTIGATE
-
             </button>
 
         </div>
@@ -1214,93 +951,117 @@ function openCyranEvidence() {
     `;
 
 }
-function inspectCyranConnection() {      const content =         document.querySelector(".case-content");      content.innerHTML = `          <div class="question-screen">              <div class="classification">                 INVESTIGATION DECISION             </div>              <h2>                 WHO DO YOU TRUST?             </h2>              <p>                 Three names.                 One missing woman.                 And someone is lying.             </p>              <div class="choice-grid">                  <button                     class="choice-button"                     onclick="chooseSuspect('kael')"                 >                     KAEL VORN                 </button>                  <button                     class="choice-button"                     onclick="chooseSuspect('cyran')"                 >                     CYRAN VEYL                 </button>                  <button                     class="choice-button"                     onclick="chooseSuspect('veyra')"                 >                     VEYRA SOLEN                 </button>              </div>          </div>      `;  }
+
+
+/* ==========================================
+   INVESTIGATION DECISION
+========================================== */
+
+function inspectCyranConnection() {
 
     const content =
         document.querySelector(".case-content");
 
     content.innerHTML = `
 
-        <div class="revelation">
+        <div class="question-screen">
 
             <div class="classification">
-                DATABASE MATCH
+                INVESTIGATION DECISION
             </div>
 
             <h2>
-                THREE NAMES.
+                WHO DO YOU TRUST?
             </h2>
 
             <p>
-                VEYRA SOLEN.
+                Three names.
+                One missing woman.
+                And someone is lying.
             </p>
 
-            <p>
-                KAEL VORN.
-            </p>
+            <div class="choice-grid">
 
-            <p>
-                CYRAN VEYL.
-            </p>
+                <button
+                    class="choice-button"
+                    onclick="chooseSuspect('kael')"
+                >
+                    KAEL VORN
+                </button>
 
-            <div class="divider"></div>
+                <button
+                    class="choice-button"
+                    onclick="chooseSuspect('cyran')"
+                >
+                    CYRAN VEYL
+                </button>
 
-            <p class="small-text">
-                ALL THREE APPEAR IN THE SAME
-                CLASSIFIED RECORD.
-            </p>
+                <button
+                    class="choice-button"
+                    onclick="chooseSuspect('veyra')"
+                >
+                    VEYRA SOLEN
+                </button>
+
+            </div>
 
         </div>
 
     `;
 
 }
-function chooseSuspect(choice) {      const content =         document.querySelector(".case-content");      let title = "";     let message = "";     let clue = "";      if (choice === "kael") {          title = "KAEL VORN";          message =             "You think Kael is hiding something.";          clue =             "A photograph was found in his apartment.";      }      else if (choice === "cyran") {          title = "CYRAN VEYL";          message =             "His records are suspiciously clean.";          clue =             "Someone accessed his deleted files.";      }      else {          title = "VEYRA SOLEN";          message =             "You believe Veyra left the clues intentionally.";          clue =             "The note was written after her disappearance.";      }       content.innerHTML = `          <div class="revelation">              <div class="classification">                 DECISION RECORDED             </div>              <h2>                 ${title}             </h2>              <p>                 ${message}             </p>              <div class="divider"></div>              <p class="small-text">                 NEW CLUE DISCOVERED             </p>              <p>                 ${clue}             </p>              <button                 class="case-button"                 onclick="openNewClue('${choice}')"             >                 OPEN CLUE             </button>          </div>      `;  }
+
+
+/* ==========================================
+   CHOICE RESULT
+========================================== */
+
+function chooseSuspect(choice) {
 
     const content =
         document.querySelector(".case-content");
 
+    let title = "";
     let message = "";
+    let clue = "";
+
 
     if (choice === "kael") {
 
-        message = `
-            KAEL VORN.<br><br>
-            You think he is hiding something.
-            <br><br>
-            <span>
-            You're right.
-            </span>
-        `;
+        title = "KAEL VORN";
+
+        message =
+            "You think Kael is hiding something.";
+
+        clue =
+            "A photograph was found in his apartment.";
 
     }
 
-    if (choice === "cyran") {
+    else if (choice === "cyran") {
 
-        message = `
-            CYRAN VEYL.<br><br>
-            His records are too clean.
-            <br><br>
-            <span>
-            Someone erased them.
-            </span>
-        `;
+        title = "CYRAN VEYL";
+
+        message =
+            "His records are suspiciously clean.";
+
+        clue =
+            "Someone accessed his deleted files.";
+
+    }
+
+    else {
+
+        title = "VEYRA SOLEN";
+
+        message =
+            "You believe Veyra left the clues intentionally.";
+
+        clue =
+            "The note was written after her disappearance.";
 
     }
 
-    if (choice === "veyra") {
-
-        message = `
-            VEYRA SOLEN.<br><br>
-            You believe she left the clues
-            intentionally.
-            <br><br>
-            <span>
-            And that changes everything.
-            </span>
-        `;
-
-    }
 
     content.innerHTML = `
 
@@ -1311,21 +1072,41 @@ function chooseSuspect(choice) {      const content =         document.querySele
             </div>
 
             <h2>
-                ${message}
+                ${title}
             </h2>
+
+            <p>
+                ${message}
+            </p>
 
             <div class="divider"></div>
 
             <p class="small-text">
-                YOUR CHOICE WILL AFFECT
-                THE INVESTIGATION.
+                NEW CLUE DISCOVERED
             </p>
+
+            <p>
+                ${clue}
+            </p>
+
+            <button
+                class="case-button"
+                onclick="openNewClue('${choice}')"
+            >
+                OPEN CLUE
+            </button>
 
         </div>
 
     `;
 
 }
+
+
+/* ==========================================
+   NEW CLUE
+========================================== */
+
 function openNewClue(choice) {
 
     const content =
@@ -1333,6 +1114,7 @@ function openNewClue(choice) {
 
     let clueTitle = "";
     let clueText = "";
+
 
     if (choice === "kael") {
 
@@ -1397,38 +1179,87 @@ function openNewClue(choice) {
     `;
 
 }
-function continueAfterChoice(choice) {      const content =         document.querySelector(".case-content");      content.innerHTML = `          <div class="archive-screen">              <div class="classification">                 DEEP ARCHIVE // ACCESS GRANTED             </div>              <h2>                 CASE 0830             </h2>              <p class="archive-warning">                 THE FOLLOWING RECORD WAS NEVER                 MEANT TO BE FOUND.             </p>              <div class="archive-files">                  <button                     class="archive-file"                     onclick="openArchiveFile('VEYRA')"                 >                     FILE 01                     <span>VEYRA SOLEN</span>                 </button>                  <button                     class="archive-file"                     onclick="openArchiveFile('KAEL')"                 >                     FILE 02                     <span>KAEL VORN</span>                 </button>                  <button                     class="archive-file"                     onclick="openArchiveFile('CYRAN')"                 >                     FILE 03                     <span>CYRAN VEYL</span>                 </button>                  <button                     class="archive-file"                     onclick="openArchiveFile('CASE')"                 >                     FILE 04                     <span>CASE 0830</span>                 </button>              </div>          </div>      `;  }
+
+
+/* ==========================================
+   DEEP ARCHIVE
+========================================== */
+
+function continueAfterChoice(choice) {
 
     const content =
         document.querySelector(".case-content");
 
     content.innerHTML = `
 
-        <div class="revelation">
+        <div class="archive-screen">
 
             <div class="classification">
-                CASE 0830 // DEEPER ACCESS
+                DEEP ARCHIVE // ACCESS GRANTED
             </div>
 
             <h2>
-                YOU FOUND THE FIRST LIE.
+                CASE 0830
             </h2>
 
-            <p>
-                But someone expected you to find it.
+            <p class="archive-warning">
+
+                THE FOLLOWING RECORD WAS NEVER
+                MEANT TO BE FOUND.
+
             </p>
 
-            <div class="divider"></div>
 
-            <p class="small-text">
-                DEEP ARCHIVE UNLOCKED
-            </p>
+            <div class="archive-files">
+
+                <button
+                    class="archive-file"
+                    onclick="openArchiveFile('VEYRA')"
+                >
+                    FILE 01
+                    <span>VEYRA SOLEN</span>
+                </button>
+
+
+                <button
+                    class="archive-file"
+                    onclick="openArchiveFile('KAEL')"
+                >
+                    FILE 02
+                    <span>KAEL VORN</span>
+                </button>
+
+
+                <button
+                    class="archive-file"
+                    onclick="openArchiveFile('CYRAN')"
+                >
+                    FILE 03
+                    <span>CYRAN VEYL</span>
+                </button>
+
+
+                <button
+                    class="archive-file"
+                    onclick="openArchiveFile('CASE')"
+                >
+                    FILE 04
+                    <span>CASE 0830</span>
+                </button>
+
+            </div>
 
         </div>
 
     `;
 
 }
+
+
+/* ==========================================
+   ARCHIVE FILES
+========================================== */
+
 function openArchiveFile(file) {
 
     const content =
@@ -1437,61 +1268,89 @@ function openArchiveFile(file) {
     let title = "";
     let text = "";
 
+
     if (file === "VEYRA") {
 
         title = "VEYRA SOLEN";
 
         text = `
+
             Missing.
+
             <br><br>
+
             Official investigation: NONE.
+
             <br><br>
+
             Last confirmed sighting:
             UNKNOWN.
+
         `;
 
     }
+
 
     else if (file === "KAEL") {
 
         title = "KAEL VORN";
 
         text = `
+
             No official record.
+
             <br><br>
+
             Name appears repeatedly
             inside Veyra's private files.
+
         `;
 
     }
+
 
     else if (file === "CYRAN") {
 
         title = "CYRAN VEYL";
 
         text = `
+
             Investigator.
+
             <br><br>
+
             Accessed the case archive
             at 02:17 AM.
+
             <br><br>
+
             Deleted the access record.
+
         `;
 
     }
+
 
     else {
 
         title = "CASE 0830";
 
         text = `
+
             THREE PEOPLE.
+
             <br><br>
+
             ONE DISAPPEARANCE.
+
             <br><br>
+
             NO OFFICIAL CASE.
+
             <br><br>
+
             SOMEONE IS WATCHING.
+
         `;
 
     }
@@ -1517,6 +1376,7 @@ function openArchiveFile(file) {
 
             </div>
 
+
             <button
                 class="case-button"
                 onclick="continueAfterArchive()"
@@ -1529,6 +1389,12 @@ function openArchiveFile(file) {
     `;
 
 }
+
+
+/* ==========================================
+   ARCHIVE SECURITY ALERT
+========================================== */
+
 function continueAfterArchive() {
 
     const content =
@@ -1556,13 +1422,293 @@ function continueAfterArchive() {
                 CONNECTION TERMINATED
             </p>
 
+            <button
+                class="case-button"
+                onclick="openFinalPuzzle()"
+            >
+                DECRYPT ARCHIVE
+            </button>
+
         </div>
-<button
-    class="case-button"
-    onclick="openFinalPuzzle()"
->
-    DECRYPT ARCHIVE
-</button>
+
     `;
 
 }
+
+
+/* ==========================================
+   FINAL PUZZLE
+========================================== */
+
+function openFinalPuzzle() {
+
+    const content =
+        document.querySelector(".case-content");
+
+    content.innerHTML = `
+
+        <div class="evidence-screen">
+
+            <div class="classification">
+                FINAL EVIDENCE
+            </div>
+
+            <h2>
+                THE THREE NUMBERS
+            </h2>
+
+            <p class="evidence-instruction">
+
+                Every important event happened
+                at the same time.
+
+                <br><br>
+
+                Veyra's last file:
+                <strong>08:30</strong>
+
+                <br><br>
+
+                Cyran's access:
+                <strong>02:17</strong>
+
+                <br><br>
+
+                The recovered note:
+                <strong>11:13</strong>
+
+                <br><br>
+
+                Three times.
+
+                <br>
+
+                One message.
+
+                <br><br>
+
+                What number do they create?
+
+            </p>
+
+
+            <input
+                id="final-answer"
+                type="text"
+                placeholder="ENTER 4 DIGITS"
+                autocomplete="off"
+                maxlength="4"
+            >
+
+
+            <button
+                class="case-button"
+                onclick="checkFinalPuzzle()"
+            >
+                DECRYPT
+            </button>
+
+
+            <p
+                id="final-feedback"
+                class="feedback"
+            ></p>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==========================================
+   CHECK FINAL PUZZLE
+========================================== */
+
+function checkFinalPuzzle() {
+
+    const input =
+        document.getElementById(
+            "final-answer"
+        );
+
+    const feedback =
+        document.getElementById(
+            "final-feedback"
+        );
+
+    const answer =
+        input.value.trim();
+
+
+    if (answer === "0830") {
+
+        feedback.innerHTML = `
+
+            ACCESS GRANTED.
+
+            <br><br>
+
+            <span>
+                THE ARCHIVE IS OPEN.
+            </span>
+
+        `;
+
+        setTimeout(() => {
+
+            openTruthArchive();
+
+        }, 1800);
+
+    }
+
+    else {
+
+        feedback.textContent =
+            "DECRYPTION FAILED — RECHECK THE EVIDENCE.";
+
+    }
+
+}
+
+
+/* ==========================================
+   TRUTH ARCHIVE
+========================================== */
+
+function openTruthArchive() {
+
+    const content =
+        document.querySelector(".case-content");
+
+    content.innerHTML = `
+
+        <div class="revelation">
+
+            <div class="classification">
+                LEVEL ZERO // TRUTH
+            </div>
+
+            <h2>
+                CASE 0830
+            </h2>
+
+            <p>
+                The case was never about
+                finding Veyra.
+            </p>
+
+            <p>
+                It was about finding
+                the person she trusted.
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="small-text">
+                FINAL RECORD UNLOCKED
+            </p>
+
+            <button
+                class="case-button"
+                onclick="openFinalReveal()"
+            >
+                OPEN FINAL RECORD
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==========================================
+   FINAL BIRTHDAY REVEAL
+========================================== */
+
+function openFinalReveal() {
+
+    const content =
+        document.querySelector(".case-content");
+
+    content.innerHTML = `
+
+        <div class="revelation birthday-reveal">
+
+            <div class="classification">
+                CASE 0830 // FINAL RECORD
+            </div>
+
+            <h2>
+                YOU FOUND THE TRUTH.
+            </h2>
+
+            <div class="divider"></div>
+
+
+            <p class="birthday-message">
+
+                This investigation was never really
+                about Veyra.
+
+                <br><br>
+
+                It was created for someone
+                who deserves to know how much
+                she means to the people around her.
+
+                <br><br>
+
+                Someone I call Thango.
+
+                <br><br>
+
+                Someone whose existence has
+                left evidence everywhere:
+
+                <br><br>
+
+                in memories,<br>
+                in laughter,<br>
+                in late-night conversations,<br>
+                in the little things nobody else notices.
+
+            </p>
+
+
+            <div class="birthday-name">
+
+                HAPPY BIRTHDAY,
+                <br>
+
+                <span>
+                    SUNSHINE
+                </span>
+
+            </div>
+
+
+            <p class="small-text">
+
+                CASE STATUS:
+
+                <span class="case-closed">
+                    CLOSED
+                </span>
+
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==========================================
+   START
+========================================== */
+
+runLoadingSequence();
